@@ -1,16 +1,44 @@
 // import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { StyledButton } from './components/Button.style';
-import { AppContainer } from './components/Container.style';
-import { GlobalStyles } from './GlobalStyles.style';
+import { ZineIndex } from './zines/ZineIndex';
+import { Auth } from './auth/Auth';
+import { Sitebar } from './components/Navbar';
 
 function App() {
-  return (
-    <AppContainer>
-      <GlobalStyles />
-      <StyledButton buttonlabel="Click here" backgroundColor="violet"></StyledButton>
+  const [ sessionToken, setSessionToken ] = useState('');
 
-    </AppContainer>
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setSessionToken(localStorage.getItem('token'));
+    }
+  }, [])
+
+  const updateToken = (newToken) => {
+    localStorage.setItem('token', newToken);
+    setSessionToken(newToken);
+    console.log(sessionToken);
+  }
+
+  const clearToken = () => {
+    localStorage.clear();
+    setSessionToken('');
+  }
+
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ?  
+    // <ZineIndex clearToken={clearToken} />
+    <ZineIndex token={sessionToken} /> : <Auth updateToken={updateToken} />
+    );
+  };
+
+  return (
+   <div>     
+    <Sitebar 
+       clickLogout={clearToken}
+    />
+     {protectedViews()}
+   </div>
   );
 }
 
