@@ -1,3 +1,18 @@
+@import './css/Nav.css';
+@import './css/Button.css';
+
+body {
+  background-color: white;
+  color: #c277e5;
+}
+
+a:link { text-decoration: none; }
+
+a:visited { text-decoration: none; }
+
+a:hover { text-decoration: none; }
+
+a:active { text-decoration: none; }
 /* .App {
   text-align: center;
 }
