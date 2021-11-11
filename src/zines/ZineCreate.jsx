@@ -34,11 +34,11 @@ class ZineCreate extends Component {
           const files = e.target.files;
           const data = new FormData();
           data.append('file', files[0]);
-          data.append('upload_preset', 'images');
+          data.append('upload_preset', 'zinester');
           this.setState({ loading: true });
         // setLoading(true);
           let res = await fetch(
-              'https://api.cloudinary.com/v1_1/zinester/images/load', {
+              'https://api.cloudinary.com/v1_1/zinester/image/upload', {
               method: 'POST',
               body: data,
           });
@@ -71,7 +71,7 @@ class ZineCreate extends Component {
         .then((res) => res.json())
         .then((zineData) => {
             console.log(zineData);
-            window.location.href = "/zines";
+            window.location.href = "/zine"; //changed from zines 11/10
 
             this.setState({ title: '' });
             this.setState({ author: '' });
@@ -80,11 +80,7 @@ class ZineCreate extends Component {
             this.setState({ yearCreated: '' });
             this.setState({ zineImg: '' });
             this.props.fetchZines();
-        })
-        //NOTE: DO I NEED TO PUT A CATCH ERROR HERE
-    //   .catch((error) => {
-    //       console.log('Oops, error', error);
-    //      alert('Hey, an error happened, fix it')
+        })        
     };
 
     render() {
@@ -118,12 +114,12 @@ class ZineCreate extends Component {
                     <FormGroup>
                         <Label htmlFor='category' />
                         <Input
-                        //   type='select'
+                          type='select'
                           name='category'
                           placeholder='Category'
                           value={this.category}
-                          onChange={(e) => this.setState({ category: e.target.value })} />
-                          {/* <option></option>
+                          onChange={(e) => this.setState({ category: e.target.value })} >
+                          <option></option>
                           <option value='Animals'>Animals</option>
                           <option value='Art'>Art</option>
                           <option value='DIY'>DIY</option>
@@ -142,8 +138,8 @@ class ZineCreate extends Component {
                           <option value='Science'>Science</option>
                           <option value='Spiritual'>Spiritual</option>
                           <option value='TrueCrime'>True Crime</option>
-                          <option value='Travel'>Travel</option> */}
-                          {/* </Input> */}
+                          <option value='Travel'>Travel</option>
+                          </Input>
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor='yearCreated' />
