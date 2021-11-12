@@ -1,0 +1,30 @@
+.btn-navbar {
+    font-size: larger;
+    text-align: center;
+    background: none !important;
+    margin-left: 10px;
+    color: #c277e5;
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;  
+}
+  
+.btn-navbar:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #00A5A8;
+    left: 45%;
+    height: 3px;
+    bottom: 0;
+    transition: 0.3s;
+}
+  
+.btn-navbar:hover:before {
+    background: #ff73c4;
+    width: 100%;
+    left:0;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css';
 import {
     Navbar,
     NavbarBrand,
@@ -8,6 +9,7 @@ import {
     NavItem,
     Button
 } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 export const Sitebar = (props) => {
     const [ isOpen, setIsOpen ] = useState(false);
@@ -19,12 +21,31 @@ export const Sitebar = (props) => {
 
     return (
         <Navbar color='faded' light expand='md'>
-            <NavbarBrand href='/'>Zinester</NavbarBrand>
+            <NavbarBrand>
+                {/* <Link to='/home'> */}
+                    Zinester
+                {/* </Link> */}
+            </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
+                    <NavItem id='navLinks'>
+                    <Link to='/home'>
+                            Home
+                        </Link>
+                    </NavItem>    
+                    <NavItem id='navLinks'>                        
+                        <Link to='/index'>
+                            Zines
+                        </Link>                       
+                    </NavItem>
+                    <NavItem id='navLinks'>
+                        <Link to='/readinglist'>
+                            Favorites
+                        </Link>
+                    </NavItem>
                     <NavItem>
-                        <Button onClick={props.clickLogout}>
+                        <Button className='btn-navbar' onClick={props.clickLogout}>
                             Logout
                         </Button>
                     </NavItem>
