@@ -5,21 +5,21 @@ import {
     Input,
     Label,
     Modal,
-    // Button,
     ModalHeader,
     ModalBody,
+    Button,
 } from 'reactstrap'
 
 class ZineEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            editTitle: this.props.zineToEdit.title,
-            editAuthor: this.props.zineToEdit.author,
-            editDescription: this.props.zineToEdit.description,
-            editCategory: this.props.zineToEdit.category,
-            editYearCreated: this.props.zineToEdit.yearCreated,
-            editZineImg: this.props.zineToEdit.zineImg
+            title: '',
+            author: '',
+            description: '',
+            category: '',
+            yearCreated: '',
+            zineImg: '',
         }
     }
 
@@ -48,33 +48,41 @@ class ZineEdit extends Component {
     render() {
         return (
             <div>
-                <Modal isOpen={true}>
+                <Modal 
+                    isOpen={true}
+                >
                     <ModalHeader>Edit this Zine</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={ZineEdit}>
+                        <Form onSubmit={this.ZineEdit}>
                             <FormGroup>
                                 <Label htmlFor='title' />
                                 <Input
                                     name='title'
                                     placeholder='Title of Zine'
-                                    value={this.state.editTitle}
-                                    onChange={(e) => this.setState({ editTitle: e.target.value })} />
+                                    value={this.state.title}
+                                    onChange={this.handleChange}
+                                    // onChange={(e) => this.setState({ editTitle: e.target.value })} 
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor='author' />
                                 <Input
                                     name='author'
                                     placeholder="Zine Author's Name"
-                                    value={this.state.editAuthor}
-                                    onChange={(e) => this.setState({ editAuthor: e.target.value })} />
+                                    value={this.state.author}
+                                    onChange={this.handleChange}
+                                    // onChange={(e) => this.setState({ editAuthor: e.target.value })} 
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor='description' />
                                 <Input
                                     name='description'
                                     placeholder='Description of Zine'
-                                    value={this.state.editDescription}
-                                    onChange={(e) => this.setState({ editDescription: e.target.value })} />
+                                    value={this.state.description}
+                                    onChange={this.handleChange}
+                                    // onChange={(e) => this.setState({ editDescription: e.target.value })} 
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor='category' />
@@ -82,8 +90,10 @@ class ZineEdit extends Component {
                                     type='select'
                                     name='category'
                                     placeholder='Category'
-                                    value={this.state.editCategory}
-                                    onChange={(e) => this.setState({ editCategory: e.target.value })} >
+                                    value={this.state.category}
+                                    onChange={this.handleChange}
+                                    // onChange={(e) => this.setState({ editCategory: e.target.value })} 
+                                >
                                     <option></option>
                                     <option value='Animals'>Animals</option>
                                     <option value='Art'>Art</option>
@@ -111,16 +121,26 @@ class ZineEdit extends Component {
                                 <Input
                                     name='yearCreated'
                                     placeholder='Published Year'
-                                    value={this.state.editYearCreated}
-                                    onChange={(e) => this.setState({ editYearCreated: e.target.value })} />
+                                    value={this.yearCreated}
+                                    onChange={this.handleChange}
+                                    // onChange={(e) => this.setState({ editYearCreated: e.target.value })} 
+                                />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor='zineImg' />
                                 <Input                                    
                                     name='zineImg'
-                                    value={this.state.editZineImg}                                    
-                                    onChange={(e) => this.setState({ editZineImg: e.target.value })} />
+                                    value={this.state.zineImg}
+                                    onChange={this.handleChange}                                    
+                                    // onChange={(e) => this.setState({ editZineImg: e.target.value })} 
+                                />
                             </FormGroup>
+                            <Button
+                                type='submit'
+                                onClick={this.handleSubmit}
+                            >
+                                Submit Edits
+                            </Button>
                         </Form>
                     </ModalBody>
                 </Modal>

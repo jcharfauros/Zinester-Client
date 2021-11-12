@@ -1,9 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Index from '../zines/Index';
-// import { Index } from "../zines/Index";
 import { Home } from "./Home";
-import { ReadingList } from "../zines/ReadingList";
+import { ReadingList } from '../Readinglist/ReadingList';
 import { Navbar } from "reactstrap";
 
 export const Switch2 = () => {

@@ -5,13 +5,15 @@ import {
 } from 'reactstrap';
 import ZineCreate from './ZineCreate';
 import ZineTable from './ZineTable';
+import ApiURL from '../helper/Environment';
+import ZineEdit from './ZineEdit';
 
 class Index extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            zine: [], //or zines?
+            zine: [],
             updateZine: false,
             zineToUpdate: {}
         }
@@ -19,8 +21,8 @@ class Index extends Component {
 
     fetchZines = () => {
         const token = localStorage.getItem('token');
-
-        fetch('http://localhost:3000/zine', {
+        
+        fetch(`${ApiURL}/zine`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -30,9 +32,25 @@ class Index extends Component {
             .then((res) => res.json())
             .then((zineData) => {
                 this.setState({zine: zineData});
-                console.log(zineData);
+                // console.log(zineData);
             });
     };
+
+    fetchToEdit = (zine) => {
+        const token = localStorage.getItem('token');
+        
+        return fetch(`${ApiURL}/zine/update/${zine.id}`, {
+            method: 'PUT',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                Authorization: token,
+            }),
+        })
+            .then((res) => {
+                this.setState({ updateZine: false })
+                this.fetchToEdit();
+            })
+    }
 
     editZine = (zine) => {
         this.setState({
@@ -67,18 +85,29 @@ class Index extends Component {
         return(
             <div>
                 <Row>
-                    <p>Hello from the Zine Index. Delete this line!</p>
                     <Col md='3'>
-                        <ZineCreate fetchZines={this.fetchZines}
+                        <ZineCreate 
+                            fetchZines={this.fetchZines}
                             token={this.props.token} />
                     </Col>
-                    <Col md='6'>
+                    <Col md='9'>
                         <ZineTable 
                             zine={this.state.zine} 
                             editZine={this.editZine}
                             editOn={this.editOn}
                             fetchZines={this.fetchZines}
                             token={this.props.token} />
+                    </Col>
+                    <Col md='12'>
+                        {
+                            this.state.updateZine ? 
+                            <ZineEdit 
+                                t={this.state.updateZine} 
+                                update={this.fetchToEdit}
+                                zine={this.state.zineToUpdate}
+                            /> :
+                            <div></div>
+                        }
                     </Col>
                 </Row>
             </div>
@@ -87,76 +116,3 @@ class Index extends Component {
 }
 
 export default Index;
-
-
-// import React, { useState, useEffect } from 'react';
-// import {
-//     Container,
-//     Row,
-//     Col
-// } from 'reactstrap';
-// import ZineCreate from './ZineCreate';
-// import ZineTable from './ZineTable';
-
-// export const Index = (props) => {
-//     const [ zine, setZine ] = useState([]);
-//     const [ updateZine, setUpdateZine ] = useState(false);
-//     const [ zineToUpdate, setZineToUpdate ] = useState({});
-
-//     const fetchZines = () => {
-//         fetch('http://localhost:3000/zine', {
-//             method: 'GET',
-//             headers: new Headers({
-//                 'Content-Type': 'application/json',
-//                 Authorization: props.token,
-//             }),
-//         })
-//             .then((res) => res.json())
-//             .then((zineData) => {
-//                 setZine(zineData);
-//                 console.log(zineData);
-//             });
-//     };
-
-//     const editZine = (zine) => {
-//         setZineToUpdate(zine);
-//         console.log(zine);
-//     }
-    
-//     const editOn = () => {
-//         setUpdateZine(true);            
-//     }
-                
-//     const editOff = () => {
-//         setUpdateZine(false);
-//     }
-
-//     useEffect(() => {
-//         fetchZines();
-//     }, []);
-
-
-//     return(
-//         <div>
-//             <Row>
-//             <p>Hello from Zines index</p>
-//                 <Col md='3'>   
-//                     <ZineCreate fetchZines={fetchZines} token={props.token} />
-//                 </Col>
-//                 <Col md='9'>
-//                     <h2>Available Zines</h2>
-//                     <ZineTable 
-//                         zine={zine}
-//                         fetchZines={fetchZines}
-//                         editZine={editZine}
-//                         editOn={editOn}
-//                         token={props.token} />
-//                 </Col>
-
-//             </Row>
-//             <Row>
-                
-//             </Row>
-//         </div>
-//     )
-// }

@@ -27,7 +27,7 @@ class ZineTable extends Component {
     }
 
     zineMapper = () => {
-        console.log(this.props.zines); //undefined
+        // console.log(this.props.zines); //undefined
         return this.props.zine.map((zine, index) => {
             return (
                 <tr key={index}>
