@@ -5,10 +5,10 @@ import {
 } from 'reactstrap';
 import '../App.css';
 import ComicCreate from './ComicCreate';
+// import ComicCards from './ComicCards';
 import ComicTable from './ComicTable';
 import ApiURL from '../helper/Environment';
 import ComicEdit from './ComicEdit';
-// import zGirlpink from '../assets/zGirlpink.png';
 import zthem_nobg from '../assets/zthem_nobg.png';
 
 class Index extends Component {
@@ -82,7 +82,7 @@ class Index extends Component {
                             className='them-img'
                         />
                     </Col>
-                    <Col md='9'>
+                    <Col md='9'>                        
                         <ComicTable 
                             comic={this.state.comic} 
                             editComic={this.editComic}
@@ -93,8 +93,7 @@ class Index extends Component {
                     </Col>
                     <Col md='12'>
                         { this.state.updateComic ? 
-                            <ComicEdit 
-                                // t={this.state.updateComic}  // is this doing anything?
+                            <ComicEdit                                 
                                 comic={this.state.comicToUpdate}
                                 fetchComics={this.fetchComics}
                                 update={this.fetchToEdit}

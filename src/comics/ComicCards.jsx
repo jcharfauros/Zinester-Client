@@ -1,13 +1,20 @@
 import { Component } from "react"
-import { 
-    Table, 
+import {     
     Button, 
-    Container,     
+    Container,
+    Row,
+    Card,
+    CardTitle,
+    CardBody,
+    CardImg,
+    CardText     
 } from 'reactstrap';
 import'../App.css';
 import ComicEdit from "./ComicEdit";
 
-class ComicTable extends Component {
+const style ={ width: '25rem'};
+
+class ComicCards extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -31,36 +38,37 @@ class ComicTable extends Component {
         // console.log(this.props.comic);
         return this.props.comic.map((comic, index) => {
             return (
-                <tr key={index}>
-                    <th scope='row'>{comic.id}</th>
-                    <td>{comic.title}</td>
-                    <td>{comic.author}</td>
-                    <td>{comic.description}</td>
-                    <td>{comic.category}</td>
-                    <td>{comic.yearCreated}</td>
-                    <td>
-                        <img 
+                <Card style={style}>
+                    <CardBody>
+                        <CardTitle
+                            id='bg-mauve'>
+                            <h4>Title: {comic.title}</h4>
+                            <span>CATEGORY:</span> {comic.category}
+                             {''} <span>PUBLISHED:</span> {comic.yearCreated}
+                        </CardTitle>
+                        <CardImg 
                             src={comic.comicImg}
                             style={{ width: '200px' }}
-                            alt='comic img'
-                        />{''}
-                        </td>
-                        <td>
+                            alt='...'/>
+                        <CardText className='c-text'>
+                            by: {comic.author}
+                            <h6>About this comic:</h6>{''} {comic.description}
+                        </CardText>
                         <ComicEdit 
                             comic={comic}
                             editOff={this.props.editOff}
                             fetchComics={this.props.fetchComics}
                             />                       
                         <Button
-                            className='btn-navbar'
-                            // color='black'
+                            className='btn-delete'
+                            color='black'
                             onClick={() => { 
                                 this.deleteComic(comic) 
                             }}>
                                 Delete
                         </Button>
-                    </td>
-                </tr>
+                    </CardBody>
+                </Card>
             );
         });
     };
@@ -68,26 +76,13 @@ class ComicTable extends Component {
     render() {
         return(
             <Container>
-                <h1>
-                    Available Comics
-                </h1>                
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Catalog#</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>Year</th>
-                            <th>Comic</th>
-                        </tr>
-                    </thead>
-                    <tbody>{this.comicMapper()}</tbody>
-                </Table>
+                <Row>
+                <h1>Available Comics</h1> 
+                    {this.comicMapper()}               
+                </Row>
             </Container>
         )
     };
 };
 
-export default ComicTable;
+export default ComicCards;

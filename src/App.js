@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 // import { Auth } from './auth/Auth';
-import { Sitebar } from './components/Navbar';
-import { Switch2 } from './components/Switch';
+import Sitebar from './components/Navbar';
+import Switch2 from './components/Switch';
 import { BrowserRouter as Router } from "react-router-dom";
-import { Landing } from './components/Landing.jsx';
+import Landing from './components/Landing.jsx';
 
 function App() {
   const [ sessionToken, setSessionToken ] = useState('');

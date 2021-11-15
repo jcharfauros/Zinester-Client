@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import '../App.css';
 import {
     Navbar,
@@ -12,62 +12,72 @@ import {
 import { Link } from "react-router-dom";
 import zTitleimg from '../assets/zTitleimg.png';
 
-export const Sitebar = (props) => {
-    const [ isOpen, setIsOpen ] = useState(false);
-
-    const toggle = () => {
-        let newIsOpen = !isOpen;
-        setIsOpen(newIsOpen);
+class Sitebar extends Component {
+    // const [ isOpen, setIsOpen ] = useState(false);
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        }
     }
 
-    const loginSignupHide = () => {
-        return props.sessionToken === localStorage.getItem("token") ? (
-            <Button className='btn-navbar' onClick={props.clickLogout}>
+   toggle = () => 
+        this.setState({ 
+            isOpen: !this.state.isOpen 
+    });
+
+    loginSignupHide = () => {
+        return this.props.sessionToken === localStorage.getItem("token") ? (
+            <Button className='btn-navbar' onClick={this.props.clickLogout}>
             Logout
             </Button>
         ) : (
             ''
         )
-      };
+    };
 
-    return (
-        <Navbar className='navBG-color' expand='md'>
+    render() {
+        return (
+            <div>
+                <Navbar className='navBG-color' expand='md'>
             {/* <NavbarBrand href='/home'> */}
-            <NavbarBrand>
-                {/* <Link to='/home'> */}
+                <NavbarBrand>                
                     <img
                         src={zTitleimg}
                         alt='zinester_logo'
                         className='logo-img'
-                    />
-                {/* </Link> */}
-            </NavbarBrand>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-                <Nav className='ml-auto' navbar>
-                    <NavItem id='navLinks' className='btn-navbar'>
-                    <Link to='/home'>
-                            Home
-                        </Link>
-                    </NavItem>    
-                    <NavItem id='navLinks' className='btn-navbar'>                        
-                        <Link to='/index'>
-                            Zines
-                        </Link>                       
-                    </NavItem>
-                    <NavItem id='navLinks' className='btn-navbar'>
-                        <Link to='/comicindex'>
-                            Comics
-                        </Link>
-                    </NavItem>
-                    <NavItem>
-                        {/* {loginSignupHide()} */}
-                        <Button className='btn-navbar' onClick={props.clickLogout}>
-                            Logout
-                        </Button>
-                    </NavItem>
-                </Nav>
-            </Collapse>
-        </Navbar>
-    )
+                    />                
+                </NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className='ml-auto' navbar>
+                            <NavItem id='navLinks' className='btn-navbar'>
+                            <Link to='/home'>
+                                Home
+                            </Link>
+                            </NavItem>    
+                            <NavItem id='navLinks' className='btn-navbar'>                        
+                                <Link to='/index'>
+                                    Zines
+                                </Link>                       
+                            </NavItem>
+                            <NavItem id='navLinks' className='btn-navbar'>
+                                <Link to='/comicindex'>
+                                    Comics
+                                </Link>
+                            </NavItem>
+                            <NavItem>
+                                {/* {loginSignupHide()} */}
+                                <Button className='btn-navbar' onClick={this.props.clickLogout}>
+                                    Logout
+                                </Button>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        )
+    };
 }
+
+export default Sitebar;

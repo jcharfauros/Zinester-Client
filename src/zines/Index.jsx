@@ -5,6 +5,7 @@ import {
 } from 'reactstrap';
 import '../App.css';
 import ZineCreate from './ZineCreate';
+// import ZineCards from './ZineCards';
 import ZineTable from './ZineTable';
 import ApiURL from '../helper/Environment';
 import ZineEdit from './ZineEdit';
@@ -82,6 +83,13 @@ class Index extends Component {
                         />
                     </Col>
                     <Col md='9'>
+                        {/* <ZineTable 
+                            zine={this.state.zine} 
+                            editZine={this.editZine}
+                            editOn={this.editOn}
+                            editOff={this.editOff}
+                            fetchZines={this.fetchZines}
+                            token={this.props.token} /> */}
                         <ZineTable 
                             zine={this.state.zine} 
                             editZine={this.editZine}

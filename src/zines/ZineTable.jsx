@@ -1,21 +1,12 @@
 import { Component } from "react"
 import { 
-    // Table, 
-    Button,
-    // Col,
-    Row, 
-    Container,   
-    Card,
-    CardBody,
-    CardImg,
-    CardTitle,
-    CardText  
+    Table, 
+    Button, 
+    Container,     
 } from 'reactstrap';
 import'../App.css';
-import zAnxious from '../assets/zAnxious.png';
 import ZineEdit from "./ZineEdit";
 
-const style ={ width: '25rem'};
 class ZineTable extends Component {
     constructor(props) {
         super(props);
@@ -40,27 +31,21 @@ class ZineTable extends Component {
         // console.log(this.props.zine);
         return this.props.zine.map((zine, index) => {
             return (
-                
-                <Card style={style}>    
-                    <CardBody>
-                        <CardTitle id='bg-pink'>
-                            <h4>Title: {zine.title}</h4>
-                            <p><span>CATEGORY:</span> {zine.category}
-                             {''} <span>published:</span> {zine.yearCreated}</p>
-                        </CardTitle>
-                        <CardImg 
+                <tr key={index}>
+                    <th scope='row'>{zine.id}</th>
+                    <td>{zine.title}</td>
+                    <td>{zine.author}</td>
+                    <td>{zine.description}</td>
+                    <td>{zine.category}</td>
+                    <td>{zine.yearCreated}</td>
+                    <td>
+                        <img 
                             src={zine.zineImg}
                             style={{ width: '200px' }}
-                            alt='...' />
-                        {/* <CardImg 
-                            alt='...'
-                            src={zAnxious}
-                            style={{ width: '250px'}}
-                        /> */}
-                        <CardText className='z-text'>
-                            <p>by: {zine.author}</p>
-                            <h6>About this zine:</h6>{''} {zine.description}
-                        </CardText>
+                            alt='zine img'
+                        />{''}
+                        </td>
+                        <td>
                         <ZineEdit 
                             zine={zine}
                             editOff={this.props.editOff}
@@ -74,19 +59,32 @@ class ZineTable extends Component {
                             }}>
                                 Delete
                         </Button>
-                    </CardBody>
-                </Card>
+                    </td>
+                </tr>
             );
-        })
+        });
     };
 
     render() {
         return(
             <Container>
-                <Row>
-                <h1>Available Zines</h1>     
-                    {this.zineMapper()}
-                </Row>
+                <h1>
+                    Available Zines
+                </h1>                
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Catalog#</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Year</th>
+                            <th>Zine</th>
+                        </tr>
+                    </thead>
+                    <tbody>{this.zineMapper()}</tbody>
+                </Table>
             </Container>
         )
     };

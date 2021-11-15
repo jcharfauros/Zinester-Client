@@ -41,6 +41,7 @@ a:active {
   background-size: cover;
   padding-top: 20px;
   height: 100vh;
+  overflow: hidden;
 }
 
 .home-text {
@@ -98,15 +99,23 @@ h4 {
  }
 
  #bg-pink {
+   border-radius: 10px;
    background-color: #FABFF3;
  }
 
  #bg-yellow {
+   border-radius: 10px;
    background-color: #F0EA58;
  }
 
  #bg-mauve {
    background-color: #de95f5;
+ }
+
+ #bg-green {
+   padding: 10px;
+   border-radius: 25px;
+   background-color: #008BA4;
  }
 
  .c-text {

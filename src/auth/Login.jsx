@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { 
     Form, 
     FormGroup, 
@@ -11,20 +12,24 @@ import {
     // Alert 
 } from 'reactstrap';
 import '../App.css';
+import ApiURL from '../helper/Environment';
+class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: '',
+        };
+    }
 
-const Login = (props) => {
-    const [username, setUsername] = useState('');
-    // const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:3000/user/login', {
+        fetch(`${ApiURL}/user/login`, {
             method: 'POST', 
             body: JSON.stringify({
-                username: username,
-                // email: email, 
-                passwordhash: password
+                username: this.state.username,
+                // email: this.state.email, 
+                passwordhash: this.state.password
             }),
             headers: new Headers({
                 'Content-Type': 'application/json'
@@ -32,42 +37,46 @@ const Login = (props) => {
         })
         .then((response) => response.json())
         .then((data) => {
-            props.updateToken(data.sessionToken);
             console.log(data);
+            if (!data.sessionToken) {
+                alert('Incorrect input, please try again!');
+                return;
+            }
+            this.props.updateToken(data.sessionToken);
+            // windows.location.href = '/home';
         })        
     };
 
-    return (
-        <div>
-            <h1 id='bg-pink'>Login</h1>
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <Input
-                        onChange={(e) => setUsername(e.target.value)}
-                        name='username'
-                        value={username}
-                        placeholder='Username' />
-                </FormGroup>
-                {/* <FormGroup>
-                    <Label htmlFor='email'>Email</Label>
-                    <Input 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        name='email' 
-                        value={email}
-                        placeholder='email' />
-                </FormGroup> */}
-                <FormGroup>
-                    {/* <Label htmlFor='password'>Password</Label> */}
-                    <Input 
-                        onChange={(e) => setPassword(e.target.value)} 
-                        name='password' 
-                        value={password}
-                        placeholder='Password' />
-                </FormGroup>
-                <Button type='submit'>Login</Button>
-            </Form>
-        </div>
-    );
-};
+
+    render() {
+        return (
+            <div id='bg-green'>
+                <h1 id='bg-pink'>Login</h1>
+                <Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                        <Input
+                            onChange={(e) => this.setState( {username: e.target.value} )}
+                            name='username'
+                            value={this.username}
+                            placeholder='Username' />
+                    </FormGroup>
+                    <FormGroup>
+                        <Input 
+                            onChange={(e) => this.setState( {password: e.target.value} )} 
+                            name='password' 
+                            value={this.password}
+                            placeholder='Password' />
+                    </FormGroup>
+                        <Button 
+                            type='submit'
+                            className='btn-create'
+                        >
+                            Login
+                        </Button>        
+                </Form>
+            </div>
+        );
+    }
+}
 
 export default Login;

@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { 
     Container,
     Row,
@@ -5,18 +6,23 @@ import {
  } from "reactstrap";
 import Login from "./Login";
 import { Signup } from "./Signup";
+import '../App.css';
 
- export const Auth = (props) => {
-     return (
-         <Container>
-             <Row>
-                 <Col md='6'>                     
-                    <Signup updateToken={props.updateToken} />
-                 </Col>
-                 <Col md='6'>
-                     <Login updateToken={props.updateToken}/>
-                 </Col>
-             </Row>
-         </Container>
-     );
- }
+class Auth extends Component {
+    render() {
+        return (
+            <Container>
+                <Row>
+                    <Col md='6'>
+                        <Signup updateToken={this.props.updateToken} />
+                    </Col>
+                    <Col md='6'>
+                        <Login updateToken={this.props.updateToken}/>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+}
+
+export default Auth;
