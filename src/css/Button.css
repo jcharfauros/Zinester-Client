@@ -1,0 +1,123 @@
+.btn-navbar {
+    font-size: larger;
+    text-align: center;
+    background: none !important;
+    margin-left: 10px;
+    color: #c277e5;
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;  
+}
+  
+.btn-navbar:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #00A5A8;
+    left: 45%;
+    height: 3px;
+    bottom: 0;
+    transition: 0.3s;
+}
+  
+.btn-navbar:hover:before {
+    background: #ff73c4;
+    width: 100%;
+    left:0;
+}
+
+.btn-create {
+    font-size: larger;
+    text-align: center;
+    background: none !important;
+    margin-left: 10px;
+    color: #A93E8B;
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;  
+}
+  
+.btn-create:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #00A5A8;
+    left: 45%;
+    height: 3px;
+    bottom: 0;
+    transition: 0.3s;
+}
+  
+.btn-create:hover:before {
+    background: #ff73c4;
+    width: 100%;
+    left:0;
+}
+
+.btn-edit {
+    font-size: medium;
+    text-align: center;
+    background: none !important;
+    margin-left: 10px;
+    color: #00A5A8;
+    border: none;
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;  
+}
+  
+.btn-edit:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #ff73c4;
+    left: 45%;
+    height: 3px;
+    bottom: 0;
+    transition: 0.3s;
+}
+  
+.btn-edit:hover:before {
+    background: #c277e5;
+    width: 100%;
+    left:0;
+}
+
+.btn-delete {
+    font-size: medium;
+    text-align: center;
+    background: none !important;
+    margin-left: 10px;
+    color: grey;
+    border: none;
+    display: inline-block;
+    padding: 5px;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;  
+}
+  
+.btn-delete:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background: #ff73c4;
+    left: 45%;
+    height: 3px;
+    bottom: 0;
+    transition: 0.3s;
+}
+  
+.btn-delete:hover:before {
+    background: #c277e5;
+    width: 100%;
+    left:0;
+}

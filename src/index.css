@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* 
+@font-face {
+  font-family: 'Lets Play';
+  src: local('Lets Play'), url(./assets/LetsPlay.ttf) format('truetype');
+} */
+
+@font-face {
+  font-family: 'cream DEMO';
+  src: local('cream DEMO'), url(./assets/cream.ttf) format('truetype');
+}
+
