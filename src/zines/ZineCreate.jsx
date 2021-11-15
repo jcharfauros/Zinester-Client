@@ -1,4 +1,3 @@
-// import React, { useState } from "react";
 import React, { Component } from 'react';
 import'../App.css';
 // import ApiURL from "../helper/Environment";
@@ -16,7 +15,7 @@ import {
 class ZineCreate extends Component {
       constructor(props) {
           super(props);
-          this.state ={
+          this.state = {
               title: '',
               author: '',
               description: '',
@@ -24,7 +23,6 @@ class ZineCreate extends Component {
               yearCreated: '',
               zineImg: '',
               isOpen: false
-            //   loading: '',
           };
       }
 
@@ -34,7 +32,7 @@ class ZineCreate extends Component {
           data.append('file', files[0]);
           data.append('upload_preset', 'zinester');
           this.setState({ loading: true });
-        // setLoading(true);
+          
           let res = await fetch(
               'https://api.cloudinary.com/v1_1/zinester/image/upload', {
               method: 'POST',
@@ -46,9 +44,9 @@ class ZineCreate extends Component {
       };
 
       handleSubmit = (e) => {
-        let token = localStorage.getItem('token');
-        
+        let token = localStorage.getItem('token');        
         e.preventDefault();
+
         fetch('http://localhost:3000/zine/create', {
             method: 'POST',
             body: JSON.stringify({
@@ -69,7 +67,7 @@ class ZineCreate extends Component {
         .then((res) => res.json())
         .then((zineData) => {
             console.log(zineData);
-            window.location.href = "/zine"; //changed from zines 11/10
+            window.location.href = "/index"; //this is where you will go after hitting submit
 
             this.setState({ title: '' });
             this.setState({ author: '' });
@@ -81,13 +79,20 @@ class ZineCreate extends Component {
         })        
     };
 
-    toggle = () => this.setState({ isOpen: !this.state.isOpen });
+    toggle = () => 
+      this.setState({ 
+        isOpen: !this.state.isOpen 
+      });
 
     render() {
         return (
             <div>
               <Button
-                onClick={this.toggle}>
+                color='black'
+                className='btn-create'
+                id='padding-create'
+                onClick={this.toggle}
+              >
                   Add New Zine
               </Button>
               <Modal isOpen={this.state.isOpen}>
@@ -168,7 +173,8 @@ class ZineCreate extends Component {
                             placeholder='Zine Image Upload'
                             onChange={this.UploadImage} />
                       </FormGroup>
-                      <Button type='submit'>Add Zine</Button>
+                      <Button 
+                        type='submit'>Add Zine</Button>
                   </Form>
                 </ModalBody>
               </Modal>

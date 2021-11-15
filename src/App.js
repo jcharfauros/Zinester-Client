@@ -1,10 +1,11 @@
 // import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Auth } from './auth/Auth';
+// import { Auth } from './auth/Auth';
 import { Sitebar } from './components/Navbar';
 import { Switch2 } from './components/Switch';
 import { BrowserRouter as Router } from "react-router-dom";
+import { Landing } from './components/Landing.jsx';
 
 function App() {
   const [ sessionToken, setSessionToken ] = useState('');
@@ -26,16 +27,22 @@ function App() {
     setSessionToken('');
   }
 
-  const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ?  
-    // <Index token={sessionToken} /> : <Auth updateToken={updateToken} />
-    // <Home token={sessionToken} /> : <Auth updateToken={updateToken} />
-    <Switch2 token={sessionToken} /> : <Auth updateToken={updateToken} />
-    );
-  };
+  // const protectedViews = () => {
+  //   return (sessionToken === localStorage.getItem('token') ?  
+  //   <Switch2 token={sessionToken} /> : <Auth updateToken={updateToken} />
+  //   ) 
+  // };
 
+  const protectedViews = () => {
+    return sessionToken === localStorage.getItem('token') ? ( 
+      <Switch2 token={sessionToken} />
+    ) : (
+      <Landing updateToken={updateToken} />
+    )    
+  };
+  
   return (
-   <div>
+    <div>
     <Router>     
       <React.Fragment>
         <Sitebar 
