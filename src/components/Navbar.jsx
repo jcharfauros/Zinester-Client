@@ -10,6 +10,7 @@ import {
     Button
 } from 'reactstrap';
 import { Link } from "react-router-dom";
+import zTitleimg from '../assets/zTitleimg.png';
 
 export const Sitebar = (props) => {
     const [ isOpen, setIsOpen ] = useState(false);
@@ -19,32 +20,48 @@ export const Sitebar = (props) => {
         setIsOpen(newIsOpen);
     }
 
+    const loginSignupHide = () => {
+        return props.sessionToken === localStorage.getItem("token") ? (
+            <Button className='btn-navbar' onClick={props.clickLogout}>
+            Logout
+            </Button>
+        ) : (
+            ''
+        )
+      };
+
     return (
-        <Navbar color='faded' light expand='md'>
+        <Navbar className='navBG-color' expand='md'>
+            {/* <NavbarBrand href='/home'> */}
             <NavbarBrand>
                 {/* <Link to='/home'> */}
-                    Zinester
+                    <img
+                        src={zTitleimg}
+                        alt='zinester_logo'
+                        className='logo-img'
+                    />
                 {/* </Link> */}
             </NavbarBrand>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
                 <Nav className='ml-auto' navbar>
-                    <NavItem id='navLinks'>
+                    <NavItem id='navLinks' className='btn-navbar'>
                     <Link to='/home'>
                             Home
                         </Link>
                     </NavItem>    
-                    <NavItem id='navLinks'>                        
+                    <NavItem id='navLinks' className='btn-navbar'>                        
                         <Link to='/index'>
                             Zines
                         </Link>                       
                     </NavItem>
-                    <NavItem id='navLinks'>
-                        <Link to='/readinglist'>
-                            Favorites
+                    <NavItem id='navLinks' className='btn-navbar'>
+                        <Link to='/comicindex'>
+                            Comics
                         </Link>
                     </NavItem>
                     <NavItem>
+                        {/* {loginSignupHide()} */}
                         <Button className='btn-navbar' onClick={props.clickLogout}>
                             Logout
                         </Button>

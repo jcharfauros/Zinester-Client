@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Index from '../zines/Index';
 import { Home } from "./Home";
-import { ReadingList } from '../Readinglist/ReadingList';
 import { Navbar } from "reactstrap";
+import Index from '../zines/Index';
+import ComicIndex from "../comics/ComicIndex";
 
 export const Switch2 = () => {
     return (
@@ -13,7 +13,7 @@ export const Switch2 = () => {
                 <Switch>
                     <Route exact path='/home' component={ Home } />
                     <Route exact path='/index' component={ Index } />  
-                    <Route exact path='/readinglist' component={ ReadingList } />                  
+                    <Route exact path='/comicindex' component={ ComicIndex } />             
                 </Switch>
         
         </React.Fragment>

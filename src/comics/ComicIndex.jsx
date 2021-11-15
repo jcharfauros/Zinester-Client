@@ -4,27 +4,28 @@ import {
     Col,
 } from 'reactstrap';
 import '../App.css';
-import ZineCreate from './ZineCreate';
-import ZineTable from './ZineTable';
+import ComicCreate from './ComicCreate';
+import ComicTable from './ComicTable';
 import ApiURL from '../helper/Environment';
-import ZineEdit from './ZineEdit';
-import zGirlpink from '../assets/zGirlpink.png';
+import ComicEdit from './ComicEdit';
+// import zGirlpink from '../assets/zGirlpink.png';
+import zthem_nobg from '../assets/zthem_nobg.png';
 
 class Index extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            zine: [],
-            updateZine: false,
-            zineToUpdate: {}
+            comic: [],
+            updateComic: false,
+            comicToUpdate: {}
         }
     }
 
-    fetchZines = () => {
+    fetchComics = () => {
         const token = localStorage.getItem('token');
         
-        fetch(`${ApiURL}/zine`, {
+        fetch(`${ApiURL}/comic`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -32,39 +33,39 @@ class Index extends Component {
             }),
         })
             .then((res) => res.json())
-            .then((zineData) => {
-                this.setState({zine: zineData});
-                // console.log(zineData);
+            .then((comicData) => {
+                this.setState({comic: comicData});
+                // console.log(comicData);
             });
     };
 
-    editZine = (zine) => {
+    editComic = (comic) => {
         this.setState({
-            zineToUpdate: zine
+            comicToUpdate: comic
         });
-        console.log(zine);
+        console.log(comic);
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.zineToUpdate !== prevProps.zineToUpdate) {
-            this.fetchZines(this.props.zineToUpdate);
+        if (this.props.comicToUpdate !== prevProps.comicToUpdate) {
+            this.fetchComics(this.props.comicToUpdate);
         }
     }
 
     editOn = () => {
         this.setState({ 
-            updateZine: true
+            updateComic: true
         });
     }
 
     editOff = () => {
         this.setState({
-            updateZine: false
+            updateComic: false
         });
     }
 
     componentDidMount() {
-        this.fetchZines();
+        this.fetchComics();
     }
 
     render() {     
@@ -72,30 +73,30 @@ class Index extends Component {
             <div>
                 <Row>
                     <Col md='3'>
-                        <ZineCreate 
-                            fetchZines={this.fetchZines}
+                        <ComicCreate 
+                            fetchComics={this.fetchComics}
                             token={this.props.token} />
                         <img
-                            src={zGirlpink}
-                            alt='zine_laptop'
-                            className='laptop-img'
+                            src={zthem_nobg}
+                            alt='them_comic'
+                            className='them-img'
                         />
                     </Col>
                     <Col md='9'>
-                        <ZineTable 
-                            zine={this.state.zine} 
-                            editZine={this.editZine}
+                        <ComicTable 
+                            comic={this.state.comic} 
+                            editComic={this.editComic}
                             editOn={this.editOn}
                             editOff={this.editOff}
-                            fetchZines={this.fetchZines}
+                            fetchComics={this.fetchComics}
                             token={this.props.token} />
                     </Col>
                     <Col md='12'>
-                        { this.state.updateZine ? 
-                            <ZineEdit 
-                                // t={this.state.updateZine}  // is this doing anything?
-                                zine={this.state.zineToUpdate}
-                                fetchZines={this.fetchZines}
+                        { this.state.updateComic ? 
+                            <ComicEdit 
+                                // t={this.state.updateComic}  // is this doing anything?
+                                comic={this.state.comicToUpdate}
+                                fetchComics={this.fetchComics}
                                 update={this.fetchToEdit}
                                 token={this.props.token}
                             /> :

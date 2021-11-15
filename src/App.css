@@ -1,53 +1,124 @@
 @import './css/Nav.css';
 @import './css/Button.css';
+@import './css/Image.css';
+
+/*
+color pallet
+
+#008BA4 -green
+#F0EA58 -yellow
+#FABFF3 -pink
+#A93E8B -mauve
+
+*/
 
 body {
-  background-color: white;
-  color: #c277e5;
+  background-color: #e7ecf5;
+  /* color: #c277e5; */
+  color: black;
+  font-family: cream DEMO, sans-serif;
 }
 
-a:link { text-decoration: none; }
+a:link { 
+  text-decoration: none; 
+}
 
-a:visited { text-decoration: none; }
+a:visited { 
+  text-decoration: none; 
+}
 
-a:hover { text-decoration: none; }
+a:hover { 
+  text-decoration: none; 
+}
 
-a:active { text-decoration: none; }
-/* .App {
+a:active { 
+  text-decoration: none; 
+}
+
+.home-component {
+  background: url('./assets/zBGimg.jpg') no-repeat center center fixed;
+  /* opacity: 0.5; */
+  background-size: cover;
+  padding-top: 20px;
+  height: 100vh;
+}
+
+.home-text {
+  background-color: #008BA4;
+  
+}
+
+p span {
+  padding: 2px;
+  color: whitesmoke;
+  /* background-color: white; */
+}
+#p-pink {
+  color: #cf85f1;
+}
+#p-white {
+  color: thistle;
+}
+#word-emph {
+  background-color: thistle;
+  color: #e057bc;
+  font-size: 20px;
+  text-shadow: 2px 2px rgb(253, 181, 235);
+}
+
+h1 {
+  font-family: cream Demo, sans-serif;
+  color:violet;
+  text-shadow: 2px 2px #008BA4;
   text-align: center;
+  padding:20px 0 10px 0;
+}
+h1 span {
+  background-color: whitesmoke;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h6 {
+  font-family: cream Demo, sans-serif;
+  color: #95ccd6;
+  text-decoration: overline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h4 {
+  text-align: center;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #E6F4F1;
+ }
 
-.App-link {
-  color: #61dafb;
-}
+ #padding-create {
+   margin-left: 20%;
+ }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+ #bg-pink {
+   background-color: #FABFF3;
+ }
+
+ #bg-yellow {
+   background-color: #F0EA58;
+ }
+
+ #bg-mauve {
+   background-color: #de95f5;
+ }
+
+ .c-text {
+   margin: 5px;
+   color: white;
+   padding: 10px;
+   background-color: #008BA4;
+ }
+
+ .z-text {
+    margin: 5px;
+    color: white;
+    padding: 10px;
+    background-color: #A93E8B;
+ }

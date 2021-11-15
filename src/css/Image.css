@@ -1,0 +1,28 @@
+.logo-img {
+    padding-left: 15px;
+    max-width: 40%;
+    /* width: 65%; */
+}
+
+.laptop-img {
+    max-width: 100%;
+}
+
+.zine-grl-grn {
+    max-width: 50%;
+    margin: 0 0 0 100px;
+}
+
+.zine-grl {
+    max-height: 40%;
+    margin: 0 0 0 100px;
+}
+
+.zine-landing {
+    max-width: 55%;
+}
+
+.them-img {
+    max-width: 95%;
+    padding-left: 5px;
+}

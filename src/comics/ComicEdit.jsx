@@ -11,27 +11,27 @@ import {
 } from 'reactstrap'
 import ApiURL from '../helper/Environment';
 
-class ZineEdit extends Component {
+class ComicEdit extends Component {
     constructor(props) {
         super(props);
         this.state = {
 
-            title: this.props?.zine?.title,
-            author: this.props?.zine?.author,
-            description: this.props?.zine?.description,
-            category: this.props?.zine?.category,
-            yearCreated: this.props?.zine?.yearCreated,
-            zineImg: this.props?.zine?.zineImg,
+            title: this.props?.comic?.title,
+            author: this.props?.comic?.author,
+            description: this.props?.comic?.description,
+            category: this.props?.comic?.category,
+            yearCreated: this.props?.comic?.yearCreated,
+            comicImg: this.props?.comic?.comicImg,
             isOpen: false
             
         }
     }
 
-    zineUpdate = (e, zine) => {
+    comicUpdate = (e, comic) => {
         const token = localStorage.getItem('token');
         e.preventDefault();
                 
-        fetch(`${ApiURL}/zine/update/${this.props.zine.id}`, {
+        fetch(`${ApiURL}/comic/update/${this.props.comic.id}`, {
             method: 'PUT',
             body: JSON.stringify({
 
@@ -40,7 +40,7 @@ class ZineEdit extends Component {
                 description: this.state.description,
                 category: this.state.category,
                 yearCreated: this.state.yearCreated,
-                zineImg: this.state.zineImg
+                comicImg: this.state.comicImg
 
             }),
             headers: new Headers({
@@ -49,7 +49,7 @@ class ZineEdit extends Component {
             }),
         })
         .then((res) => {
-            this.props.fetchZines();
+            this.props.fetchComics();
             this.props.editOff();        
         });
     }
@@ -65,21 +65,22 @@ class ZineEdit extends Component {
                 <Button
                     className='btn-edit'
                     color='black'
-                    onClick={this.toggle}>
+                    onClick={this.toggle}
+                    >
                         Update
                     </Button>
                 <Modal isOpen={this.state.isOpen}>
                     <Button
                         onClick={this.toggle}> X 
                     </Button>
-                    <ModalHeader>Edit this Zine</ModalHeader>
+                    <ModalHeader>Edit this Comic</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.zineUpdate}>
+                        <Form onSubmit={this.comicUpdate}>
                             <FormGroup>
                                 <Label htmlFor='title' />
                                 <Input
                                     name='title'
-                                    placeholder='Title of Zine'
+                                    placeholder='Title of Comic'
                                     value={this.state.title}                                   
                                     onChange={(e) => this.setState({ title: e.target.value })} 
                                 />
@@ -88,7 +89,7 @@ class ZineEdit extends Component {
                                 <Label htmlFor='author' />
                                 <Input
                                     name='author'
-                                    placeholder="Zine Author's Name"
+                                    placeholder="Comic Author's Name"
                                     value={this.state.author}
                                     onChange={(e) => this.setState({ author: e.target.value })} 
                                 />
@@ -97,7 +98,7 @@ class ZineEdit extends Component {
                                 <Label htmlFor='description' />
                                 <Input
                                     name='description'
-                                    placeholder='Description of Zine'
+                                    placeholder='Description of Comic'
                                     value={this.state.description}
                                     // onChange={this.handleChange}
                                     onChange={(e) => this.setState({ description: e.target.value })} 
@@ -114,25 +115,18 @@ class ZineEdit extends Component {
                                     onChange={(e) => this.setState({ category: e.target.value })} 
                                 >
                                     <option></option>
-                                    <option value='Animals'>Animals</option>
-                                    <option value='Art'>Art</option>
-                                    <option value='DIY'>DIY</option>
-                                    <option value='Education'>Education</option>
-                                    <option value='Fanzine'>Fanzine</option>
-                                    <option value='Feminism'>Feminism</option>
-                                    <option value='Food'>Food</option>
-                                    <option value='Health'>Health</option>
-                                    <option value='LGBTIA'>LGBTIA</option>
-                                    <option value='Literary'>Literary</option>
-                                    <option value='Love'>Love</option>
-                                    <option value='Media'>Media</option>
-                                    <option value='Minicomic'>Mini comic</option>
-                                    <option value='Music'>Music</option>
-                                    <option value='Political'>Political</option>
-                                    <option value='Science'>Science</option>
-                                    <option value='Spiritual'>Spiritual</option>
+                                    <option value='Adventure'>Adventure</option>
+                                    <option value='Adult'>Adult</option>
+                                    <option value='Alternative'>Alternative</option>
+                                    <option value='Children'>Children</option>
+                                    <option value='Esoteric'>Esoteric</option>
+                                    <option value='Fantasy'>Fantasy</option>
+                                    <option value='Horro'>Horror</option>
+                                    <option value='Humor'>Humor</option>
+                                    <option value='Manga'>Manga</option>
+                                    <option value='Romance'>Romance</option>
+                                    <option value='ScienceFiction'>SciFi</option>
                                     <option value='TrueCrime'>True Crime</option>
-                                    <option value='Travel'>Travel</option>
                                 </Input>
                             </FormGroup>
                             <FormGroup>
@@ -146,12 +140,11 @@ class ZineEdit extends Component {
                                 />
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlFor='zineImg' />
+                                <Label htmlFor='comicImg' />
                                 <Input
                                     type='file'
-                                //   name='zineImg'
                                     name='file'
-                                    placeholder='Zine Image Upload'
+                                    placeholder='Comic Image Upload'
                                     onChange={this.UploadImage} />
                             </FormGroup>
                             <Button type='submit'
@@ -167,4 +160,4 @@ class ZineEdit extends Component {
     }
 }
 
-export default ZineEdit;
+export default ComicEdit;
