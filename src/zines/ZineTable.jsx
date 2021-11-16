@@ -38,10 +38,10 @@ class ZineTable extends Component {
                     <td>{zine.description}</td>
                     <td>{zine.category}</td>
                     <td>{zine.yearCreated}</td>
-                    <td>
+                    <td onClick={()=> window.open([zine.zineImg], "_blank")}>
                         <img 
                             src={zine.zineImg}
-                            style={{ width: '200px' }}
+                            style={{ width: '100px' }}
                             alt='zine img'
                         />{''}
                         </td>
@@ -70,7 +70,8 @@ class ZineTable extends Component {
             <Container>
                 <h1>
                     Available Zines
-                </h1>                
+                </h1>
+                <p className='note-text'>note: click the image for larger image</p>                
                 <Table striped bordered hover>
                     <thead>
                         <tr>

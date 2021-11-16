@@ -19,7 +19,7 @@ class Home extends Component {
                         />
                     </Col>
                     <Col xs={6} md={5} className='home-text'>
-                        <h1><span>Welcome Zinester {`${this.props.name}`}!!</span></h1>
+                        <h1><span>Welcome Zinester!!</span></h1>
                         {/* i want to add the user's name here                         */}
                         <p><span><span id='word-emph'>Zinester</span> (noun) zine·ster | \ 'zēn-ster \</span></p>
                         <p><span id='p-white'> 1. one who compiles and publishes a zine. 2. one who loves zines.</span>

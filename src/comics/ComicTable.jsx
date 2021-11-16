@@ -38,7 +38,7 @@ class ComicTable extends Component {
                     <td>{comic.description}</td>
                     <td>{comic.category}</td>
                     <td>{comic.yearCreated}</td>
-                    <td>
+                    <td onClick={()=> window.open([comic.comicImg], "_blank")}>
                         <img 
                             src={comic.comicImg}
                             style={{ width: '200px' }}
@@ -70,7 +70,8 @@ class ComicTable extends Component {
             <Container>
                 <h1>
                     Available Comics
-                </h1>                
+                </h1>
+                <p className='note-text'>note: click the image for larger image</p>             
                 <Table striped bordered hover>
                     <thead>
                         <tr>

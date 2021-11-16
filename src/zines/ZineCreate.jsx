@@ -22,7 +22,7 @@ class ZineCreate extends Component {
               category: '',
               yearCreated: '',
               zineImg: '',
-              isOpen: false
+              isOpen: false,              
           };
       }
 
@@ -39,8 +39,8 @@ class ZineCreate extends Component {
               body: data,
           });
           const File = await res.json();
-          this.setState({ image: File.secure_url });
           console.log(this.state.image);
+          this.setState({ image: File.secure_url });
           this.setState({ loading: false });
       };
 
@@ -172,7 +172,7 @@ class ZineCreate extends Component {
                           //   name='zineImg'
                             name='file'
                             placeholder='Zine Image Upload'
-                            onChange={this.UploadImage} />
+                            onChange={this.UploadImage} />                           
                       </FormGroup>
                       <Button 
                         type='submit'>Add Zine</Button>

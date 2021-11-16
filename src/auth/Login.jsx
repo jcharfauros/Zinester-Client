@@ -46,7 +46,7 @@ class Login extends Component {
             this.props.updateToken(data.sessionToken);
             // this.handleClick();
             // localStorage.setItem('name', data.user.name);
-            localStorage.setItem("name", this.props.user.name);
+            // localStorage.setItem("name", this.props.user.name);
             window.location.href = '/home';
         })        
     };

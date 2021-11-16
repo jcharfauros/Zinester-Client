@@ -13,8 +13,8 @@ color pallet
 */
 
 body {
-  /* background-color: #e7ecf5; */
-  background-color: #FABFF3;
+  background-color: #e7ecf5;
+  /* background-color: #FABFF3; */
   /* color: #c277e5; */
   color: black;
   font-family: cream DEMO, sans-serif;
@@ -139,4 +139,10 @@ h4 {
     color: white;
     padding: 10px;
     background-color: #A93E8B;
+ }
+
+ .note-text {
+   text-align: center;
+   color: #008BA4;
+   font-size: medium;
  }
