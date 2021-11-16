@@ -21,7 +21,7 @@ class ComicEdit extends Component {
             description: this.props?.comic?.description,
             category: this.props?.comic?.category,
             yearCreated: this.props?.comic?.yearCreated,
-            comicImg: this.props?.comic?.comicImg,
+            comicImg: this.props?.comic?.image,
             isOpen: false
             
         }
@@ -40,7 +40,7 @@ class ComicEdit extends Component {
                 description: this.state.description,
                 category: this.state.category,
                 yearCreated: this.state.yearCreated,
-                comicImg: this.state.comicImg
+                comicImg: this.state.image
 
             }),
             headers: new Headers({

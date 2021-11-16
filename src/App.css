@@ -13,7 +13,8 @@ color pallet
 */
 
 body {
-  background-color: #e7ecf5;
+  /* background-color: #e7ecf5; */
+  background-color: #FABFF3;
   /* color: #c277e5; */
   color: black;
   font-family: cream DEMO, sans-serif;
@@ -28,7 +29,8 @@ a:visited {
 }
 
 a:hover { 
-  text-decoration: none; 
+  text-decoration: none;
+  cursor: pointer; 
 }
 
 a:active { 
@@ -36,17 +38,24 @@ a:active {
 }
 
 .home-component {
-  background: url('./assets/zBGimg.jpg') no-repeat center center fixed;
-  /* opacity: 0.5; */
+  /* background: url('./assets/zBGimg.jpg') no-repeat center center fixed; */
+  background: url('./assets/zBGimg2.png') no-repeat center center fixed;
   background-size: cover;
-  padding-top: 20px;
+  padding-top: 10px;
   height: 100vh;
   overflow: hidden;
 }
 
 .home-text {
   background-color: #008BA4;
+  margin: 35px;
   
+}
+
+.copyright-text {
+  color: thistle;
+  font-size: smaller;
+  text-align: center;
 }
 
 p span {

@@ -55,7 +55,7 @@ class ComicIndex extends Component {
                   description: this.state.description,
                   category: this.state.category,
                   yearCreated: this.state.yearCreated,
-                  comicImg: this.state.comicImg
+                  comicImg: this.state.image
               
           }), 
           headers: new Headers({

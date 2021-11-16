@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import { Link } from "react-router-dom";
 import zTitleimg from '../assets/zTitleimg.png';
+import zIMG from '../assets/zIMG.png';
 
 class Sitebar extends Component {
     // const [ isOpen, setIsOpen ] = useState(false);
@@ -43,7 +44,7 @@ class Sitebar extends Component {
             {/* <NavbarBrand href='/home'> */}
                 <NavbarBrand>                
                     <img
-                        src={zTitleimg}
+                        src={zIMG}
                         alt='zinester_logo'
                         className='logo-img'
                     />                

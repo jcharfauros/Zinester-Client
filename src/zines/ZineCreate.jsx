@@ -40,6 +40,7 @@ class ZineCreate extends Component {
           });
           const File = await res.json();
           this.setState({ image: File.secure_url });
+          console.log(this.state.image);
           this.setState({ loading: false });
       };
 
@@ -56,7 +57,7 @@ class ZineCreate extends Component {
                     description: this.state.description,
                     category: this.state.category,
                     yearCreated: this.state.yearCreated,
-                    zineImg: this.state.zineImg
+                    zineImg: this.state.image
                 
             }), 
             headers: new Headers({

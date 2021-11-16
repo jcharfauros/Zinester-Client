@@ -21,7 +21,7 @@ class ZineEdit extends Component {
             description: this.props?.zine?.description,
             category: this.props?.zine?.category,
             yearCreated: this.props?.zine?.yearCreated,
-            zineImg: this.props?.zine?.zineImg,
+            zineImg: this.props?.zine?.image,
             isOpen: false
             
         }
@@ -40,7 +40,7 @@ class ZineEdit extends Component {
                 description: this.state.description,
                 category: this.state.category,
                 yearCreated: this.state.yearCreated,
-                zineImg: this.state.zineImg
+                zineImg: this.state.image
 
             }),
             headers: new Headers({

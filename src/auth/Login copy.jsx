@@ -1,6 +1,5 @@
 // import React, { useState } from 'react';
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { 
     Form, 
     FormGroup, 
@@ -44,16 +43,10 @@ class Login extends Component {
                 return;
             }
             this.props.updateToken(data.sessionToken);
-            // this.handleClick();
-            // localStorage.setItem('name', data.user.name);
-            localStorage.setItem("name", this.props.user.name);
-            window.location.href = '/home';
+            // windows.location.href = '/home';
         })        
     };
 
-    handleClick = () => {
-        this.props.history.push('/home');
-    }
 
     render() {
         return (
@@ -86,4 +79,4 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+export default Login;

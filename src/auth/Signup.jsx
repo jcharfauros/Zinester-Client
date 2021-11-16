@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
     Form,
     FormGroup,
-    Label,
+    // Label,
     Input,
     Button
 } from 'reactstrap';
@@ -23,51 +24,55 @@ class Signup extends Component {
         };
     }
 
-        handleSubmit = (event) => {
-            event.preventDefault();
-            fetch(`${ApiURL}/user/signup`, {
-                method: 'POST',
-                body: JSON.stringify({
-                   
-                        firstName: this.state.firstname,
-                        lastName: this.state.lastname,
-                        username: this.state.username,
-                        email: this.state.email, 
-                        passwordhash: this.state.password,
-                        isZinester: this.state.isZinester
-                   
-                }),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                }),
+    handleSubmit = (event) => {
+        event.preventDefault();
+        fetch(`${ApiURL}/user/signup`, {
+            method: 'POST',
+            body: JSON.stringify({
+               
+                    firstName: this.state.firstname,
+                    lastName: this.state.lastname,
+                    username: this.state.username,
+                    email: this.state.email, 
+                    passwordhash: this.state.password,
+                    isZinester: this.state.isZinester
+               
+            }),
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                if (!data.sessionToken) {
+                    alert('Oops, something went wrong, please try again.');
+                    return;
+                }
+                this.props.updateToken(data.sessionToken );
+                // this.handleClick();
+                window.location.href = '/home';
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                    if (!data.sessionToken) {
-                        alert('Oops, something went wrong, please try again.');
-                        return;
-                    }
-                    this.props.updateToken(data.sessionToken );
-                    window.location.href = '/home';
-                })
-        };
+    };
+
+    
+    handleClick = () => {
+        this.props.history.push('/home');
+    }
 
     render() {
         return (
             <div id='bg-green'>
                 <h1 id='bg-yellow'>Sign Up</h1>
                 <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                        {/* <Label htmlFor='firstname'>First name</Label> */}
+                <FormGroup>                        
                         <Input 
                             onChange={(e) => this.setState({firstname: e.target.value})} 
                             name='firstname' 
                             value={this.firstname}
                             placeholder='First Name' />
                     </FormGroup>
-                    <FormGroup>
-                        {/* <Label htmlFor='lastname'>Last name</Label> */}
+                    <FormGroup>                        
                         <Input 
                             onChange={(e) => this.setState({lastname: e.target.value})} 
                             name='lastname' 
@@ -83,7 +88,6 @@ class Signup extends Component {
                             placeholder='Username' />
                     </FormGroup>
                     <FormGroup>
-                        {/* <Label htmlFor='email'>Email</Label> */}
                         <Input 
                             onChange={(e) => this.setState({email: e.target.value})} 
                             name='email' 
@@ -91,22 +95,19 @@ class Signup extends Component {
                             placeholder='Email' />
                     </FormGroup>
                     <FormGroup>
-                        {/* <Label htmlFor='password'>Password</Label> */}
                         <Input 
                             onChange={(e) => this.setState({password: e.target.value})} 
                             name='password' 
                             value={this.password} 
                             placeholder='Password'/>
                     </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor='iszinester'>Zinester</Label>
-                        {' '}
+                    {/* <FormGroup>                        
                         <Input 
                             onChange={(e) => this.setstate({isZinester: e.target.value})} 
                             name='iszinester'
                             type='checkbox'
                             value={this.isZinester} />
-                    </FormGroup>
+                    </FormGroup> */}
                     <Button 
                         type='submit'
                         className='btn-create'
@@ -119,4 +120,4 @@ class Signup extends Component {
     }    
 }
 
-export default Signup;
+export default withRouter(Signup);
