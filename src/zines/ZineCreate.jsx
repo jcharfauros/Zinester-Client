@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import'../App.css';
-// import ApiURL from "../helper/Environment";
+import ApiURL from "../helper/Environment";
 import {
     Button,
     Form,
@@ -48,7 +48,7 @@ class ZineCreate extends Component {
         let token = localStorage.getItem('token');        
         e.preventDefault();
 
-        fetch('http://localhost:3000/zine/create', {
+        fetch(`${ApiURL}/zine/create`, {
             method: 'POST',
             body: JSON.stringify({
                 

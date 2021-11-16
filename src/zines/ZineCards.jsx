@@ -12,6 +12,7 @@ import {
 import'../App.css';
 import zAnxious from '../assets/zAnxious.png';
 import ZineEdit from "./ZineEdit";
+import ApiURL from "../helper/Environment";
 
 const style ={ width: '25rem'};
 class ZineCards extends Component {
@@ -23,7 +24,7 @@ class ZineCards extends Component {
     deleteZine = (zine) => {
         const token = localStorage.getItem('token');        
        
-        fetch(`http://localhost:3000/zine/delete/${zine.id}`, {
+        fetch(`${ApiURL}/zine/delete/${zine.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

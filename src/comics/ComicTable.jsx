@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import'../App.css';
 import ComicEdit from "./ComicEdit";
+import ApiURL from "../helper/Environment";
 
 class ComicTable extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class ComicTable extends Component {
     deleteComic = (comic) => {
         const token = localStorage.getItem('token');        
        
-        fetch(`http://localhost:3000/comic/delete/${comic.id}`, {
+        fetch(`${ApiURL}/comic/delete/${comic.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

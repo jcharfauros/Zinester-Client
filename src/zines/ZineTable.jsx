@@ -5,6 +5,7 @@ import {
     Container,     
 } from 'reactstrap';
 import'../App.css';
+import ApiURL from "../helper/Environment";
 import ZineEdit from "./ZineEdit";
 
 class ZineTable extends Component {
@@ -16,7 +17,7 @@ class ZineTable extends Component {
     deleteZine = (zine) => {
         const token = localStorage.getItem('token');        
        
-        fetch(`http://localhost:3000/zine/delete/${zine.id}`, {
+        fetch(`${ApiURL}/zine/delete/${zine.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

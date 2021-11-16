@@ -9,7 +9,8 @@ import {
     Modal,
     ModalBody,
     ModalHeader,    
-} from 'reactstrap'
+} from 'reactstrap';
+import ApiURL from '../helper/Environment';
 
 class ComicIndex extends Component {
     constructor(props) {
@@ -46,7 +47,7 @@ class ComicIndex extends Component {
       let token = localStorage.getItem('token');
       
       e.preventDefault();
-      fetch('http://localhost:3000/comic/create', {
+      fetch(`${ApiURL}/comic/create`, {
           method: 'POST',
           body: JSON.stringify({
               
