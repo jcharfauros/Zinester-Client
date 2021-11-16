@@ -94,9 +94,11 @@ class ComicIndex extends Component {
             </Button>
             <Modal isOpen={this.state.isOpen}>
               <Button
-                onClick={this.toggle}> X 
+                color='black'
+                className='btn-delete'
+                onClick={this.toggle}> cancel
               </Button>
-              <ModalHeader>Upload a New Comic</ModalHeader>
+              <ModalHeader className='e-text'><h2>Upload a New Comic</h2></ModalHeader>
               <ModalBody>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
@@ -161,8 +163,20 @@ class ComicIndex extends Component {
                           name='file'
                           placeholder='Comic Image Upload'
                           onChange={this.UploadImage} />
+                          <br />
+                             {this.state.loading ? (
+                                <h6>Loading...</h6>
+                                    ) : (
+                                // eslint-disable-next-line jsx-a11y/alt-text
+                                <img src={this.image} />
+                              )}                          
                     </FormGroup>
-                    <Button type='submit'>Add Comic</Button>
+                    <Button
+                      className='btn-create'
+                      color='black'
+                      type='submit'>
+                        Add Comic
+                    </Button>
                 </Form>
               </ModalBody>
             </Modal>

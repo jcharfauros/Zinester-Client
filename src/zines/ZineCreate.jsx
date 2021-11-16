@@ -87,7 +87,7 @@ class ZineCreate extends Component {
 
     render() {
         return (
-            <div>
+            <div className='mb-3'>
               <Button
                 color='black'
                 className='btn-create'
@@ -98,9 +98,11 @@ class ZineCreate extends Component {
               </Button>
               <Modal isOpen={this.state.isOpen}>
                 <Button
-                  onClick={this.toggle}> X 
+                  color='black'
+                  className='btn-delete'
+                  onClick={this.toggle}> cancel 
                 </Button>
-                <ModalHeader>Upload New Zine</ModalHeader>
+                <ModalHeader className='e-text'><h2>Upload New Zine</h2></ModalHeader>
                 <ModalBody>
                   <Form onSubmit={this.handleSubmit}>
                       <FormGroup>
@@ -172,9 +174,18 @@ class ZineCreate extends Component {
                           //   name='zineImg'
                             name='file'
                             placeholder='Zine Image Upload'
-                            onChange={this.UploadImage} />                           
+                            onChange={this.UploadImage} />
+                            <br />
+                             {this.state.loading ? (
+                                <h6>Loading...</h6>
+                                    ) : (
+                                // eslint-disable-next-line jsx-a11y/alt-text
+                                <img src={this.image} />
+                              )}                           
                       </FormGroup>
-                      <Button 
+                      <Button
+                        className='btn-create'
+                        color='black'
                         type='submit'>Add Zine</Button>
                   </Form>
                 </ModalBody>

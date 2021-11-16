@@ -70,9 +70,11 @@ class ZineEdit extends Component {
                     </Button>
                 <Modal isOpen={this.state.isOpen}>
                     <Button
-                        onClick={this.toggle}> X 
+                        color='black'
+                        className='btn-delete'
+                        onClick={this.toggle}> cancel 
                     </Button>
-                    <ModalHeader>Edit this Zine</ModalHeader>
+                    <ModalHeader className='e-text'><h2>Edit this Zine</h2></ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.zineUpdate}>
                             <FormGroup>
@@ -153,8 +155,18 @@ class ZineEdit extends Component {
                                     name='file'
                                     placeholder='Zine Image Upload'
                                     onChange={this.UploadImage} />
+                                    <br />
+                                {this.state.loading ? (
+                                    <h6>Loading...</h6>
+                                    ) : (
+                                // eslint-disable-next-line jsx-a11y/alt-text
+                                    <img src={this.image} />
+                                    )}     
                             </FormGroup>
-                            <Button type='submit'
+                            <Button
+                                className='btn-create'
+                                color='black'
+                                type='submit'
                                 onClick={this.toggle}
                             >
                                 Submit Edits

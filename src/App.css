@@ -146,3 +146,12 @@ h4 {
    color: #008BA4;
    font-size: medium;
  }
+
+ .e-text {
+  margin: 5px;
+  color: #e057bc;
+  text-shadow: 2px 2px #008BA4;
+  padding: 10px;
+  font-family: cream Demo, sans-serif;
+  background-color: #FABFF3;
+}
