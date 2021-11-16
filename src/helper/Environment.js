@@ -7,7 +7,7 @@ switch (window.location.hostname) {
       ApiURL = "http://localhost:3000";
       break;
     case "zinester.herokuapp.com": //client
-      ApiURL = "https://zinester-server.herokuapp.com"; //server
+      ApiURL = "https://zinester-srv.herokuapp.com"; //server
   }
 
 export default ApiURL;
